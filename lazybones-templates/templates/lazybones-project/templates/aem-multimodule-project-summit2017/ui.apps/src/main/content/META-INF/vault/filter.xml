@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/${appsFolderName}"/>
+<% if (createEditableTemplatesStructure) { %>
+    <filter root="/conf/${appsFolderName}" mode="merge"/>
+<% } %>
+<% if (createMainClientLib || createDependenciesClientLib) { %>
+    <filter root="/etc/clientlibs/${appsFolderName}"/>
+<% } %>
+<% if (createDesign) { %>
+    <filter root="/etc/designs/${designFolderName}">
+        <include pattern="/etc/designs/${designFolderName}"/>
+        <include pattern="/etc/designs/${designFolderName}/jcr:content"/>
+    </filter>
+<% } %>
+<% if (createSiteRoot) { %>
+    <filter root="/content/${contentFolderName}" mode="merge" />
+<% } %>
+</workspaceFilter>
